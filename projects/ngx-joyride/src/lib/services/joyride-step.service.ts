@@ -13,6 +13,7 @@ import { ReplaySubject, Observable } from 'rxjs';
 import { JoyrideStepInfo } from '../models/joyride-step-info.class';
 import { JoyrideStepDoesNotExist, JoyrideStepOutOfRange } from '../models/joyride-error.class';
 import { LoggerService } from './logger.service';
+import {first} from 'rxjs/operators';
 
 const SCROLLBAR_SIZE = 20;
 
@@ -100,9 +101,11 @@ export class JoyrideStepService implements IJoyrideStepService {
     }
 
     next() {
-        this.removeCurrentStep();
-        this.currentStep.nextClicked.emit();
-        this.tryShowStep(StepActionType.NEXT);
+        this.currentStep.beforeNextClicked().pipe(first()).subscribe(() => {
+            this.removeCurrentStep();
+            this.currentStep.nextClicked.emit();
+            this.tryShowStep(StepActionType.NEXT);
+        });
     }
 
     private async navigateToStepPage(action: StepActionType) {

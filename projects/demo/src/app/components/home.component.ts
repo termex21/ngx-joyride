@@ -1,5 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { JoyrideService } from 'ngx-joyride';
+import {Observable} from 'rxjs';
 
 @Component({
     selector: 'home',
@@ -14,6 +15,13 @@ export class HomeComponent implements AfterViewInit, OnInit {
     title = 'ngx-joyride library demo';
 
     dynamicTitle = 'Title';
+
+    private privateVariable = 'toto';
+
+    beforeNextClicked = () => {
+        console.log(this.privateVariable);
+        return new Observable<void>(observer => observer.next());
+    }
     constructor(private readonly joyrideService: JoyrideService) {}
 
     ngAfterViewInit(): void {}

@@ -20,7 +20,7 @@ import { Router } from '@angular/router';
 import { DomRefService } from '../services/dom.service';
 import { isPlatformBrowser } from '@angular/common';
 import { TemplatesService } from '../services/templates.service';
-import { Observable, Subscription } from 'rxjs';
+import {EMPTY, Observable, of, Subscription} from 'rxjs';
 
 export const NO_POSITION = 'NO_POSITION';
 
@@ -51,6 +51,9 @@ export class JoyrideDirective implements AfterViewInit, OnChanges, OnDestroy {
 
     @Input()
     prevTemplate?: TemplateRef<any>;
+
+    @Input()
+    beforeNextClicked?: () => Observable<void> = () => new Observable<void>(observer => observer.next());
 
     @Input()
     nextTemplate?: TemplateRef<any>;
@@ -97,6 +100,7 @@ export class JoyrideDirective implements AfterViewInit, OnChanges, OnDestroy {
         this.setAsyncFields(this.step);
         this.step.stepContent = this.stepContent;
         this.step.stepContentParams = this.stepContentParams;
+        this.step.beforeNextClicked = this.beforeNextClicked;
         this.step.nextClicked = this.next;
         this.step.prevCliked = this.prev;
         this.step.tourDone = this.done;

@@ -32,11 +32,12 @@
         joyrideStep="step3"
         stepPosition="left"
         (prev)="toggleAction()"
+        [beforeNextClicked]="this.beforeNextClicked"
         [title]="'Step1 Title'"
         [text]="'This is the text'"
         style="position: absolute; top: 15px; right: 15px"
     >
-This is 
+This is
         js code</pre
     >
     <div id="tester" [style.width.px]="20">Tester</div>
@@ -58,18 +59,18 @@ This is
         (done)="stepDone()"
         class="lorem"
         title="Lorem"
-        text="Lorem Ipsum è un testo segnaposto utilizzato nel settore 
-        della tipografia e della stampa. Lorem Ipsum è considerato il 
-        testo segnaposto standard sin dal sedicesimo secolo, quando un anonimo 
-        della tipografia e della stampa. Lorem Ipsum è considerato il 
-        testo segnaposto standard sin dal sedicesimo secolo, quando un anonimo 
-        della tipografia e della stampa. Lorem Ipsum è considerato il 
-        testo segnaposto standard sin dal sedicesimo secolo, quando un anonimo 
+        text="Lorem Ipsum è un testo segnaposto utilizzato nel settore
+        della tipografia e della stampa. Lorem Ipsum è considerato il
+        testo segnaposto standard sin dal sedicesimo secolo, quando un anonimo
+        della tipografia e della stampa. Lorem Ipsum è considerato il
+        testo segnaposto standard sin dal sedicesimo secolo, quando un anonimo
+        della tipografia e della stampa. Lorem Ipsum è considerato il
+        testo segnaposto standard sin dal sedicesimo secolo, quando un anonimo
         tipografo prese una cassetta di caratteri e li assemblò per preparare un testo campione.
-        Lorem Ipsum è considerato il 
-        testo segnaposto standard sin dal sedicesimo secolo, quando un anonimo 
-        della tipografia e della stampa. Lorem Ipsum è considerato il 
-        testo segnaposto standard sin dal sedicesimo secolo, quando un anonimo 
+        Lorem Ipsum è considerato il
+        testo segnaposto standard sin dal sedicesimo secolo, quando un anonimo
+        della tipografia e della stampa. Lorem Ipsum è considerato il
+        testo segnaposto standard sin dal sedicesimo secolo, quando un anonimo
         tipografo prese una cassetta di caratteri e li assemblò per preparare un testo campione."
     >
         Lorem
